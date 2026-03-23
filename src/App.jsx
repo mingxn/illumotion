@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import CardTrick from "./pages/card-trick/Page";
@@ -11,7 +11,7 @@ const pages = [
 
 export default function App() {
   return (
-    <HashRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Home pages={pages} />} />
@@ -20,6 +20,6 @@ export default function App() {
           ))}
         </Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
