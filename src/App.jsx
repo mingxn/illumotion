@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import CardTrick from "./pages/card-trick/Page";
+import RotateDeviceOverlay from "./components/RotateDeviceOverlay";
 
 const pages = [
   { path: "/card-trick", title: "Card Trick", component: CardTrick },
@@ -12,6 +13,7 @@ const pages = [
 export default function App() {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <RotateDeviceOverlay />
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Home pages={pages} />} />

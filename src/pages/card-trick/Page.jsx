@@ -36,7 +36,19 @@ export default function CardTrickPage() {
   const [highlightRank, setHighlightRank] = useState(null);
   const [cutCount, setCutCount] = useState(0);
   const [dealProgress, setDealProgress] = useState(0);
+  const [scale, setScale] = useState(1);
   const timerRef = useRef(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const w = window.innerWidth;
+      // 1600 is enough to fit the 1558px deck plus some padding
+      setScale(w < 1600 ? w / 1600 : 1);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const clearTimer = () => clearTimeout(timerRef.current);
 
@@ -199,9 +211,10 @@ export default function CardTrickPage() {
 
   return (
     <div className="page-container" style={{ maxWidth: 960, justifyContent: (phase === "deal" || phase === "result") ? "flex-start" : undefined, paddingTop: (phase === "deal" || phase === "result") ? "4rem" : undefined }}>
-      <AnimatePresence mode="wait">
-        <Annotation key={phase} text={annotations[phase]} />
-      </AnimatePresence>
+      <div style={{ transform: `scale(${scale})`, transformOrigin: 'top center', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <AnimatePresence mode="wait">
+          <Annotation key={phase} text={annotations[phase]} />
+        </AnimatePresence>
 
       {/* Piles – 2 rows: 6 above, 7 below (rendered before deck so they appear above it) */}
       {piles && (
@@ -376,7 +389,7 @@ export default function CardTrickPage() {
         </div>
       )}
 
-
+      </div>
     </div>
   );
 }

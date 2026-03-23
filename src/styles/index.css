@@ -19,6 +19,7 @@ body {
   background: var(--bg);
   color: var(--fg);
   min-height: 100dvh;
+  overflow-x: hidden;
 }
 
 a {
@@ -242,4 +243,62 @@ main {
 
 .pile-cell:first-child {
   margin-top: 0;
+}
+
+/* Rotate Device Overlay */
+.rotate-device-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+@media (max-width: 900px) and (orientation: portrait) {
+  .rotate-device-overlay {
+    display: flex;
+  }
+}
+
+.rotate-device-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.phone-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+}
+
+.phone-icon {
+  animation: rotatePhone 2.5s infinite ease-in-out;
+  transform-origin: center;
+  color: var(--accent);
+}
+
+@keyframes rotatePhone {
+  0% { transform: rotate(0deg); }
+  35% { transform: rotate(-90deg); }
+  65% { transform: rotate(-90deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.rotate-device-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.rotate-device-content p {
+  opacity: 0.7;
+  margin: 0;
 }
