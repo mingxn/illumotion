@@ -1,0 +1,245 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0d1117;
+  --fg: #e6edf3;
+  --accent: #58a6ff;
+  --card: #161b22;
+  --border: #30363d;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 100dvh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Layout */
+
+.layout {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-header {
+  padding: 1.5rem 2rem;
+}
+
+.logo {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  opacity: 0.6;
+  transition: opacity 0.15s;
+}
+
+.logo:hover {
+  opacity: 1;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Home */
+
+.home {
+  text-align: center;
+  padding: 2rem;
+}
+
+.home h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.tagline {
+  margin-top: 0.5rem;
+  opacity: 0.5;
+  font-size: 1rem;
+}
+
+.page-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 2.5rem;
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.page-card {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem 1.5rem;
+  font-weight: 600;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.page-card:hover {
+  border-color: var(--accent);
+  background: #1a2030;
+}
+
+/* Page (per-topic) */
+
+.page-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  min-height: 50vh;
+}
+
+/* Deck strip */
+
+.deck-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  min-height: 220px;
+  align-items: center;
+}
+
+.deck-strip {
+  position: relative;
+  display: flex;
+  gap: 2px;
+  margin: 1.5rem 0;
+  overflow: visible;
+}
+
+.cut-container {
+  display: flex;
+  gap: 0;
+}
+
+.cut-group {
+  display: flex;
+  gap: 2px;
+}
+
+.cell {
+  width: 28px;
+  height: 80px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cell-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+}
+
+.cut-line {
+  position: absolute;
+  top: -4px;
+  width: 2px;
+  height: calc(100% + 8px);
+  background: var(--fg);
+  transform-origin: center;
+  z-index: 10;
+  border-radius: 1px;
+}
+
+.distance-markers {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 36px;
+  pointer-events: none;
+}
+
+.marker {
+  position: absolute;
+  top: 4px;
+  font-size: 12px;
+  color: var(--accent);
+  text-align: center;
+  font-weight: 700;
+}
+
+.gap-label {
+  position: absolute;
+  top: 0;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: center;
+  border-top: 1px solid var(--accent);
+  line-height: 1;
+  padding-top: 2px;
+}
+
+/* Dealt piles */
+
+.piles {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.piles-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.pile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.pile-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  opacity: 0.5;
+}
+
+.pile-cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.pile-cell {
+  width: 40px;
+  height: 60px;
+  border-radius: 4px;
+  margin-top: -44px;
+  border: 1.5px solid rgba(0, 0, 0, 0.35);
+}
+
+.pile-cell:first-child {
+  margin-top: 0;
+}
